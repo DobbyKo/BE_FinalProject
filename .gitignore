@@ -1,0 +1,54 @@
+# .gitignore for Visual Studio projects
+
+# Build Folders
+bin/
+debug/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# Visual Studio working files
+.vs/
+
+# Auto-generated files
+*.dll
+*.exe
+*.pdb
+*.cache
+*.ilk
+*.lib
+*.ndb
+*.obj
+*.idb
+*.tlog
+*.tmp
+*.ide
+*.sbr
+*.swp
+*.bak
+*.old
+
+# NuGet Packages
+*.nupkg
+packages/
+
+# Coverage and test results
+TestResults/
+*.coverage
+*.coveragexml
+*.codecov
+
+# Temporary and system files
+$RECYCLE.BIN/
+*.tmp
+*.bak
+*.swp
+~*
