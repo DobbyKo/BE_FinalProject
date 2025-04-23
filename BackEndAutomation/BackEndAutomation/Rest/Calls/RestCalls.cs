@@ -1,4 +1,7 @@
-﻿using RestSharp;
+﻿using Newtonsoft.Json;
+using System.Net;
+using RestSharp;
+using BackEndAutomation.Utilities;
 
 namespace BackEndAutomation.Rest.Calls
 {
@@ -123,6 +126,58 @@ namespace BackEndAutomation.Rest.Calls
             requestOnlineShop.AddParameter("password", password);
             RestResponse response = client.Execute(requestOnlineShop);
             Console.WriteLine(response.Content);
+            return response;
+        }
+
+        public RestResponse SchoolApiLoginCall(string username, string password)
+        {
+            RestClientOptions options = new RestClientOptions("https://schoolprojectapi.onrender.com")
+            {
+                Timeout = TimeSpan.FromSeconds(120),
+            };
+
+            RestClient client = new RestClient(options);
+            RestRequest request = new RestRequest("/auth/login", Method.Post);
+
+            request.AlwaysMultipartFormData = true;
+            request.AddParameter("username", username);
+            request.AddParameter("password", password);
+            RestResponse response = client.Execute(request);
+
+            Logger.Log.Info($"Login Response: {response.Content}");
+
+
+
+            return response;
+        }
+
+        public string GetTokenFromResponse(RestResponse response)
+        {
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                var responseContent = JsonConvert.DeserializeObject<dynamic>(response.Content);
+                return responseContent?.token;
+            }
+
+            Logger.Log.Warn("Login failed or token not found. Response does not contain a token.");
+            return null;
+        }
+
+        public RestResponse CreateClass(string token, object requestPayload)
+        {
+            var options = new RestClientOptions("https://schoolprojectapi.onrender.com")
+            {
+                Timeout = TimeSpan.FromSeconds(120),
+            };
+
+            var client = new RestClient(options);
+            var request = new RestRequest("/classes/create", Method.Post);
+
+            request.AddHeader("Authorization", $"Bearer {token}");
+            request.AddJsonBody(requestPayload);
+
+            var response = client.Execute(request);
+            Logger.Log.Info($"Create class response: {response.Content}");
             return response;
         }
     }

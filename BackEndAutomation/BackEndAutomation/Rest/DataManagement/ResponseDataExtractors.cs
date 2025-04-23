@@ -1,14 +1,24 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using BackEndAutomation.Utilities;
+using Newtonsoft.Json.Linq;
 
 namespace BackEndAutomation.Rest.DataManagement
 {
     public class ResponseDataExtractors
     {
 
-        public string ExtractLoggedInUserToken(string jsonResponse, string jsonIdentfier = "token")
+        public string ExtractLoggedInUserToken(string jsonResponse, string jsonIdentifier = "token")
         {
+            Logger.Log.Info($"Raw JSON response: {jsonResponse}");
+
             JObject jsonObject = JObject.Parse(jsonResponse);
-            return jsonObject[jsonIdentfier]?.ToString();
+            string token = jsonObject[jsonIdentifier]?.ToString();
+
+            if (string.IsNullOrEmpty(token))
+            {
+                Logger.Log.Error("Access token not found in response JSON!");
+            }
+
+            return token;
         }
 
         public int ExtractUserId(string jsonResponse)

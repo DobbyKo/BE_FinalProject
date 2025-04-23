@@ -18,12 +18,6 @@ namespace BackEndAutomation.Utilities
             }
         }
 
-        /// <summary>
-        /// Log message into the report log and test run log file
-        /// </summary>
-        /// <param name="message">Message to be logged</param>
-        /// <param name="scenarioContext">Scenario context</param>
-        /// <param name="status">Type of log message, e.g. Info, Debug</param>
         public static void LogMessage(
             string message,
             ScenarioContext scenarioContext,

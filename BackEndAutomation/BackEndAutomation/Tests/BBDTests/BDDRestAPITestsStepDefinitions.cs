@@ -24,13 +24,13 @@ namespace BackEndAutomation.Tests.BBDTests
             _test = scenarioContext.Get<ExtentTest>("ExtentTest");
         }
 
-        [Given("login data is prepared")]
-        [When("login data is prepared")]
-        public void GivenLoginDataIsPrepared()
-        {
-            //Console.WriteLine("Login data is prepared");
-            _test.Log(Status.Info, "Login data is prepared");
-        }
+        //[Given("login data is prepared")]
+        //[When("login data is prepared")]
+        //public void GivenLoginDataIsPrepared2()
+        //{
+        //    //Console.WriteLine("Login data is prepared");
+        //    _test.Log(Status.Info, "Login data is prepared");
+        //}
 
         [When("execute login API call")]
         public void WhenExecuteLoginAPICall()
