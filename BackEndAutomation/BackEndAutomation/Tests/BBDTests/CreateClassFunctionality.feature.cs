@@ -20,18 +20,18 @@ namespace BackEndAutomation.Tests.BBDTests
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("UserLoginFunctionality")]
-    public partial class UserLoginFunctionalityFeature
+    [NUnit.Framework.DescriptionAttribute("CreateClassFunctionality")]
+    public partial class CreateClassFunctionalityFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Tests/BBDTests", "UserLoginFunctionality", "As a user \r\nI want to be able to login successfully with valid credentials\r\nor ge" +
-                "tting validation when they are incorrect", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Tests/BBDTests", "CreateClassFunctionality", "  As a Teacher\r\n  I want to be able to create a class with subjects\r\n  So that I " +
+                "can manage students and lessons effectively", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
-#line 1 "UserLoginFunctionality.feature"
+#line 1 "CreateClassFunctionality.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
@@ -82,15 +82,24 @@ namespace BackEndAutomation.Tests.BBDTests
             await testRunner.CollectScenarioErrorsAsync();
         }
         
+        public virtual async System.Threading.Tasks.Task FeatureBackgroundAsync()
+        {
+#line 7
+  #line hidden
+#line 8
+    await testRunner.GivenAsync("a Teacher user is logged in", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Admin logs in and retrieves a valid JWT token")]
-        public async System.Threading.Tasks.Task AdminLogsInAndRetrievesAValidJWTToken()
+        [NUnit.Framework.DescriptionAttribute("Teacher creates a class with valid data")]
+        public async System.Threading.Tasks.Task TeacherCreatesAClassWithValidData()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Admin logs in and retrieves a valid JWT token", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 8
-this.ScenarioInitialize(scenarioInfo);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Teacher creates a class with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 10
+  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -99,38 +108,31 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 9
-    await testRunner.GivenAsync("login data is prepared", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
-#line 10
-    await testRunner.WhenAsync("an Admin user with valid username \"admin5\" and password \"admin127\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 7
+  await this.FeatureBackgroundAsync();
 #line hidden
 #line 11
-    await testRunner.ThenAsync("the response should return a valid JWT token", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.WhenAsync("the Teacher sends a request to create a class with the following details:", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 12
-    await testRunner.AndAsync("the token should contain Admin permissions", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.ThenAsync("the response should indicate success", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 13
+    await testRunner.AndAsync("the class should be created with the correct details", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("User logs in and retrieves a valid JWT token")]
-        [NUnit.Framework.TestCaseAttribute("admin", "admin5", "admin127", null)]
-        [NUnit.Framework.TestCaseAttribute("teacher", "teacher3", "teacher3", null)]
-        [NUnit.Framework.TestCaseAttribute("moderator", "moderator", "moderator", null)]
-        [NUnit.Framework.TestCaseAttribute("parent", "parent1", "parent1", null)]
-        public async System.Threading.Tasks.Task UserLogsInAndRetrievesAValidJWTToken(string role, string username, string password, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Teacher creates a class with missing subjects")]
+        public async System.Threading.Tasks.Task TeacherCreatesAClassWithMissingSubjects()
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("role", role);
-            argumentsOfScenario.Add("username", username);
-            argumentsOfScenario.Add("password", password);
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("User logs in and retrieves a valid JWT token", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 14
-this.ScenarioInitialize(scenarioInfo);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Teacher creates a class with missing subjects", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 15
+  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -139,38 +141,31 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 15
-    await testRunner.GivenAsync("login data is prepared", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line 7
+  await this.FeatureBackgroundAsync();
 #line hidden
 #line 16
-    await testRunner.WhenAsync(string.Format("\"{0}\" user with valid username - \"{1}\" and password - \"{2}\"", role, username, password), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.WhenAsync("the Teacher sends a request to create a class with the following details:", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 17
-    await testRunner.ThenAsync("the response should return a valid JWT token", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.ThenAsync("the response should return a validation error", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 18
-    await testRunner.AndAsync("the token should contain Admin permissions", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync("the class should not be created", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Login fails with missing fields")]
-        [NUnit.Framework.TestCaseAttribute("admin5", "", null)]
-        [NUnit.Framework.TestCaseAttribute("admin5", "123", null)]
-        [NUnit.Framework.TestCaseAttribute("122", "moderator", null)]
-        [NUnit.Framework.TestCaseAttribute("*", "parent1", null)]
-        [NUnit.Framework.TestCaseAttribute("", "parent1", null)]
-        public async System.Threading.Tasks.Task LoginFailsWithMissingFields(string username, string password, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Teacher creates a class with an already existing name")]
+        public async System.Threading.Tasks.Task TeacherCreatesAClassWithAnAlreadyExistingName()
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("username", username);
-            argumentsOfScenario.Add("password", password);
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Login fails with missing fields", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 27
-this.ScenarioInitialize(scenarioInfo);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Teacher creates a class with an already existing name", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 20
+  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -179,14 +174,20 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 28
-await testRunner.WhenAsync(string.Format("a user submits a login request with missing or incorrect \"{0}\" or \"{1}\"", username, password), ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 7
+  await this.FeatureBackgroundAsync();
 #line hidden
-#line 29
-await testRunner.ThenAsync("the response should return a validation error", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 21
+    await testRunner.GivenAsync("a class named \"5th Grade\" already exists", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 30
-await testRunner.AndAsync("no JWT token should be returned", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 22
+    await testRunner.WhenAsync("the Teacher sends a request to create a class with the following details:", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 23
+    await testRunner.ThenAsync("the response should indicate a conflict error", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 24
+    await testRunner.AndAsync("the class should not be created", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

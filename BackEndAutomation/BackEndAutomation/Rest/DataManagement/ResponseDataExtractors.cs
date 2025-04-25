@@ -33,5 +33,20 @@ namespace BackEndAutomation.Rest.DataManagement
             return jsonObject["message"]?.ToString();
 
         }
+
+        public string ExtractMessageFromResponse(string jsonResponse, string jsonIdentifier = "message")
+        {
+            Logger.Log.Info($"Raw JSON response: {jsonResponse}");
+
+            JObject jsonObject = JObject.Parse(jsonResponse);
+            string message = jsonObject[jsonIdentifier]?.ToString();
+
+            if (string.IsNullOrEmpty(message))
+            {
+                Logger.Log.Error("Message not found in response JSON!");
+            }
+
+            return message;
+        }
     }
 }

@@ -16,6 +16,9 @@ namespace BackEndAutomation.Models
             Id = id;
             Name = name;
         }
-
+        public Subject(string name)
+        {
+            Name = name;
+        }
     }
 }

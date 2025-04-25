@@ -2,6 +2,7 @@
 using System.Net;
 using RestSharp;
 using BackEndAutomation.Utilities;
+using BackEndAutomation.Models;
 
 namespace BackEndAutomation.Rest.Calls
 {
@@ -146,8 +147,6 @@ namespace BackEndAutomation.Rest.Calls
 
             Logger.Log.Info($"Login Response: {response.Content}");
 
-
-
             return response;
         }
 
@@ -159,11 +158,11 @@ namespace BackEndAutomation.Rest.Calls
                 return responseContent?.token;
             }
 
-            Logger.Log.Warn("Login failed or token not found. Response does not contain a token.");
+            Logger.Log.Warn($"Login failed with status code: {response.StatusCode}. Response: {response.Content}");
             return null;
         }
 
-        public RestResponse CreateClass(string token, object requestPayload)
+        public RestResponse CreateClass(string token, string className, string subject1, string subject2, string subject3)
         {
             var options = new RestClientOptions("https://schoolprojectapi.onrender.com")
             {
@@ -173,12 +172,23 @@ namespace BackEndAutomation.Rest.Calls
             var client = new RestClient(options);
             var request = new RestRequest("/classes/create", Method.Post);
 
+            request.AddHeader("Content-Type", "application/json");
             request.AddHeader("Authorization", $"Bearer {token}");
-            request.AddJsonBody(requestPayload);
+            request.AddHeader("Content-Type", "application/json");
 
-            var response = client.Execute(request);
-            Logger.Log.Info($"Create class response: {response.Content}");
+            request.AddQueryParameter("class_name", className);
+            request.AddQueryParameter("subject_1", subject1);
+            request.AddQueryParameter("subject_2", subject2);
+            request.AddQueryParameter("subject_3", subject3);
+
+            Logger.Log.Info($"Sending request with parameters: class_name={className}, subject_1={subject1}, subject_2={subject2}, subject_3={subject3}");
+
+            RestResponse response = client.Execute(request);
+
+            Logger.Log.Info($"Response Content: {response.Content}");
+
             return response;
         }
+
     }
 }
