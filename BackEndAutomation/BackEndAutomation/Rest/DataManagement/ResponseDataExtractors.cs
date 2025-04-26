@@ -48,5 +48,11 @@ namespace BackEndAutomation.Rest.DataManagement
 
             return message;
         }
+
+        public string ExtractValueFromResponse(string jsonResponse, string key)
+        {
+            var json = JObject.Parse(jsonResponse);
+            return json[key]?.ToString();
+        }
     }
 }

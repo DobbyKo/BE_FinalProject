@@ -2,7 +2,6 @@
 using System.Net;
 using RestSharp;
 using BackEndAutomation.Utilities;
-using BackEndAutomation.Models;
 
 namespace BackEndAutomation.Rest.Calls
 {
@@ -162,8 +161,11 @@ namespace BackEndAutomation.Rest.Calls
             return null;
         }
 
-        public RestResponse CreateClass(string token, string className, string subject1, string subject2, string subject3)
+        public RestResponse CreateClass(string token, string className, List<string> subjects)
         {
+            if (subjects == null || subjects.Count == 0 || subjects.Count > 3)
+                throw new ArgumentException("Class must have between 1 and 3 subjects.");
+
             var options = new RestClientOptions("https://schoolprojectapi.onrender.com")
             {
                 Timeout = TimeSpan.FromSeconds(120),
@@ -174,14 +176,15 @@ namespace BackEndAutomation.Rest.Calls
 
             request.AddHeader("Content-Type", "application/json");
             request.AddHeader("Authorization", $"Bearer {token}");
-            request.AddHeader("Content-Type", "application/json");
 
             request.AddQueryParameter("class_name", className);
-            request.AddQueryParameter("subject_1", subject1);
-            request.AddQueryParameter("subject_2", subject2);
-            request.AddQueryParameter("subject_3", subject3);
 
-            Logger.Log.Info($"Sending request with parameters: class_name={className}, subject_1={subject1}, subject_2={subject2}, subject_3={subject3}");
+            for (int i = 0; i < subjects.Count; i++)
+            {
+                request.AddQueryParameter($"subject_{i + 1}", subjects[i]);
+            }
+
+            Logger.Log.Info($"Sending request with parameters: class_name={className}, subjects={string.Join(", ", subjects)}");
 
             RestResponse response = client.Execute(request);
 

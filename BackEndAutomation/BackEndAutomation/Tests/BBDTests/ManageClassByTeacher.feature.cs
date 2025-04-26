@@ -20,18 +20,18 @@ namespace BackEndAutomation.Tests.BBDTests
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("CreateClassFunctionality")]
-    public partial class CreateClassFunctionalityFeature
+    [NUnit.Framework.DescriptionAttribute("Manage class by Teacher")]
+    public partial class ManageClassByTeacherFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Tests/BBDTests", "CreateClassFunctionality", "  As a Teacher\r\n  I want to be able to create a class with subjects\r\n  So that I " +
-                "can manage students and lessons effectively", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Tests/BBDTests", "Manage class by Teacher", "  As a Teacher\r\n  I want to be able to create a class, add students, and manage g" +
+                "rades\r\n  So that I can maintain class data easily", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
-#line 1 "CreateClassFunctionality.feature"
+#line 1 "ManageClassByTeacher.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
@@ -111,13 +111,21 @@ namespace BackEndAutomation.Tests.BBDTests
 #line 7
   await this.FeatureBackgroundAsync();
 #line hidden
+                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+                            "Subject"});
+                table1.AddRow(new string[] {
+                            "Math"});
+                table1.AddRow(new string[] {
+                            "Science"});
+                table1.AddRow(new string[] {
+                            "English"});
 #line 11
-    await testRunner.WhenAsync("the Teacher sends a request to create a class with the following details:", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.WhenAsync("the Teacher sends a request to create a class with the following details:", ((string)(null)), table1, "When ");
 #line hidden
-#line 12
+#line 16
     await testRunner.ThenAsync("the response should indicate success", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 13
+#line 17
     await testRunner.AndAsync("the class should be created with the correct details", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
@@ -131,7 +139,7 @@ namespace BackEndAutomation.Tests.BBDTests
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Teacher creates a class with missing subjects", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 15
+#line 19
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -144,13 +152,19 @@ namespace BackEndAutomation.Tests.BBDTests
 #line 7
   await this.FeatureBackgroundAsync();
 #line hidden
-#line 16
-    await testRunner.WhenAsync("the Teacher sends a request to create a class with the following details:", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
+                            "Subject"});
+                table2.AddRow(new string[] {
+                            "Math"});
+                table2.AddRow(new string[] {
+                            "Science"});
+#line 20
+    await testRunner.WhenAsync("the Teacher sends a request to create a class with the following details:", ((string)(null)), table2, "When ");
 #line hidden
-#line 17
-    await testRunner.ThenAsync("the response should return a validation error", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 24
+    await testRunner.ThenAsync("the class creation response should return a validation error", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 18
+#line 25
     await testRunner.AndAsync("the class should not be created", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
@@ -164,7 +178,7 @@ namespace BackEndAutomation.Tests.BBDTests
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Teacher creates a class with an already existing name", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 20
+#line 27
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -177,17 +191,22 @@ namespace BackEndAutomation.Tests.BBDTests
 #line 7
   await this.FeatureBackgroundAsync();
 #line hidden
-#line 21
-    await testRunner.GivenAsync("a class named \"5th Grade\" already exists", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+                global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
+                            "Subject"});
+                table3.AddRow(new string[] {
+                            "Math"});
+                table3.AddRow(new string[] {
+                            "Science"});
+                table3.AddRow(new string[] {
+                            "English"});
+#line 28
+    await testRunner.WhenAsync("the Teacher sends a request to create a class with the following details:", ((string)(null)), table3, "When ");
 #line hidden
-#line 22
-    await testRunner.WhenAsync("the Teacher sends a request to create a class with the following details:", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 33
+    await testRunner.AndAsync("the Teacher tries to send request with the same Class name", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 23
+#line 34
     await testRunner.ThenAsync("the response should indicate a conflict error", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-#line 24
-    await testRunner.AndAsync("the class should not be created", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
