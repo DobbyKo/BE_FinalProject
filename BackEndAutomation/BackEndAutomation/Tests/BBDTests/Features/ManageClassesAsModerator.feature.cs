@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace BackEndAutomation.Tests.BBDTests
+namespace BackEndAutomation.Tests.BBDTests.Features
 {
     using Reqnroll;
     using System;
@@ -20,18 +20,18 @@ namespace BackEndAutomation.Tests.BBDTests
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Manage class by Teacher")]
-    public partial class ManageClassByTeacherFeature
+    [NUnit.Framework.DescriptionAttribute("Moderator manages classes")]
+    public partial class ModeratorManagesClassesFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Tests/BBDTests", "Manage class by Teacher", "  As a Teacher\r\n  I want to be able to create a class, add students, and manage g" +
-                "rades\r\n  So that I can maintain class data easily", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Tests/BBDTests/Features", "Moderator manages classes", "  As a Moderator\r\n  I want to be able to move students and delete empty classes\r\n" +
+                "  So that the school structure stays clean", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
-#line 1 "ManageClassByTeacher.feature"
+#line 1 "ManageClassesAsModerator.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
@@ -84,21 +84,21 @@ namespace BackEndAutomation.Tests.BBDTests
         
         public virtual async System.Threading.Tasks.Task FeatureBackgroundAsync()
         {
-#line 7
+#line 6
   #line hidden
-#line 8
-    await testRunner.GivenAsync("a Teacher user is logged in", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line 7
+    await testRunner.GivenAsync("a Moderator user is logged in", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Teacher creates a class with valid data")]
-        public async System.Threading.Tasks.Task TeacherCreatesAClassWithValidData()
+        [NUnit.Framework.DescriptionAttribute("Moderator moves a student from one class to another")]
+        public async System.Threading.Tasks.Task ModeratorMovesAStudentFromOneClassToAnother()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Teacher creates a class with valid data", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 10
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Moderator moves a student from one class to another", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 9
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -108,38 +108,66 @@ namespace BackEndAutomation.Tests.BBDTests
             else
             {
                 await this.ScenarioStartAsync();
-#line 7
+#line 6
   await this.FeatureBackgroundAsync();
 #line hidden
-                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
-                            "Subject"});
-                table1.AddRow(new string[] {
-                            "Math"});
-                table1.AddRow(new string[] {
-                            "Science"});
-                table1.AddRow(new string[] {
-                            "English"});
+#line 10
+    await testRunner.GivenAsync("two classes exist", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
 #line 11
-    await testRunner.WhenAsync("the Teacher sends a request to create a class with the following details:", ((string)(null)), table1, "When ");
+    await testRunner.AndAsync("a student is assigned to the first class", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 12
+    await testRunner.WhenAsync("the Moderator moves the student to the second class", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 13
+    await testRunner.ThenAsync("the student should be assigned to the new class", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Moderator deletes an empty class")]
+        public async System.Threading.Tasks.Task ModeratorDeletesAnEmptyClass()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Moderator deletes an empty class", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 15
+  this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 6
+  await this.FeatureBackgroundAsync();
 #line hidden
 #line 16
-    await testRunner.ThenAsync("the response should indicate success", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.GivenAsync("an empty class created", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 17
-    await testRunner.AndAsync("the class should be created with the correct details", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.WhenAsync("the Moderator deletes the empty class", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 18
+    await testRunner.ThenAsync("the class should be deleted successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Teacher creates a class with missing subjects")]
-        public async System.Threading.Tasks.Task TeacherCreatesAClassWithMissingSubjects()
+        [NUnit.Framework.DescriptionAttribute("Moderator cannot delete a class that is not empty")]
+        public async System.Threading.Tasks.Task ModeratorCannotDeleteAClassThatIsNotEmpty()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Teacher creates a class with missing subjects", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 19
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Moderator cannot delete a class that is not empty", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 20
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -149,64 +177,20 @@ namespace BackEndAutomation.Tests.BBDTests
             else
             {
                 await this.ScenarioStartAsync();
-#line 7
+#line 6
   await this.FeatureBackgroundAsync();
 #line hidden
-                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
-                            "Subject"});
-                table2.AddRow(new string[] {
-                            "Math"});
-                table2.AddRow(new string[] {
-                            "Science"});
-#line 20
-    await testRunner.WhenAsync("the Teacher sends a request to create a class with the following details:", ((string)(null)), table2, "When ");
+#line 21
+    await testRunner.GivenAsync("a class exists with students", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 22
+    await testRunner.WhenAsync("the Moderator tries to delete the non-empty class", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 23
+    await testRunner.ThenAsync("the class should not be deleted", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 24
-    await testRunner.ThenAsync("the class creation response should return a validation error", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-#line 25
-    await testRunner.AndAsync("the class should not be created", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Teacher creates a class with an already existing name")]
-        public async System.Threading.Tasks.Task TeacherCreatesAClassWithAnAlreadyExistingName()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Teacher creates a class with an already existing name", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 27
-  this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 7
-  await this.FeatureBackgroundAsync();
-#line hidden
-                global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
-                            "Subject"});
-                table3.AddRow(new string[] {
-                            "Math"});
-                table3.AddRow(new string[] {
-                            "Science"});
-                table3.AddRow(new string[] {
-                            "English"});
-#line 28
-    await testRunner.WhenAsync("the Teacher sends a request to create a class with the following details:", ((string)(null)), table3, "When ");
-#line hidden
-#line 33
-    await testRunner.AndAsync("the Teacher tries to send request with the same Class name", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 34
-    await testRunner.ThenAsync("the response should indicate a conflict error", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.AndAsync("a meaningful error should be returned", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

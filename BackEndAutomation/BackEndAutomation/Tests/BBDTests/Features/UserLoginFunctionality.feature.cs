@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace BackEndAutomation.Tests.BBDTests
+namespace BackEndAutomation.Tests.BBDTests.Features
 {
     using Reqnroll;
     using System;
@@ -28,7 +28,7 @@ namespace BackEndAutomation.Tests.BBDTests
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Tests/BBDTests", "UserLoginFunctionality", "As a user \r\nI want to be able to login successfully with valid credentials\r\nor ge" +
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Tests/BBDTests/Features", "UserLoginFunctionality", "As a user \r\nI want to be able to login successfully with valid credentials\r\nor ge" +
                 "tting validation when they are incorrect", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
 #line 1 "UserLoginFunctionality.feature"

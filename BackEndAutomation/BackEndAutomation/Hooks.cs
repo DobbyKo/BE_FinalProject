@@ -55,18 +55,6 @@ namespace BackEndAutomation
             Console.WriteLine("Do something only when scenario is tagged with '@tag1'");
         }
 
-        [BeforeScenario(Order = 1)]
-        public void FirstBeforeScenario()
-        {
-            Console.WriteLine("Do something before every scenario, the lowest order is executed first");
-        }
-
-        [BeforeScenario(Order = -99)]
-        public void NegativeBeforeScenario()
-        {
-            Console.WriteLine("FIRST FIRST BEFORE");
-        }
-
         [BeforeScenario]
         public void BeforeScenario()
         {

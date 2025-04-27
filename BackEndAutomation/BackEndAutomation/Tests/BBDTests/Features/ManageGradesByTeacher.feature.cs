@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace BackEndAutomation.Tests.BBDTests
+namespace BackEndAutomation.Tests.BBDTests.Features
 {
     using Reqnroll;
     using System;
@@ -20,17 +20,18 @@ namespace BackEndAutomation.Tests.BBDTests
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Stock")]
-    public partial class StockFeature
+    [NUnit.Framework.DescriptionAttribute("ManageGradesByTeacher")]
+    public partial class ManageGradesByTeacherFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Tests/BBDTests", "Stock", "A short summary of the feature", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Tests/BBDTests/Features", "ManageGradesByTeacher", " As a Teacher\r\n  I want to add or update a grade for a student\r\n  So that I can e" +
+                "valuate their performance", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
-#line 1 "Stock.feature"
+#line 1 "ManageGradesByTeacher.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
@@ -81,16 +82,23 @@ namespace BackEndAutomation.Tests.BBDTests
             await testRunner.CollectScenarioErrorsAsync();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Calculate time for investment with 200 per month until 1000 return")]
-        [NUnit.Framework.CategoryAttribute("tag1")]
-        public async System.Threading.Tasks.Task CalculateTimeForInvestmentWith200PerMonthUntil1000Return()
+        public virtual async System.Threading.Tasks.Task FeatureBackgroundAsync()
         {
-            string[] tagsOfScenario = new string[] {
-                    "tag1"};
+#line 7
+#line hidden
+#line 8
+ await testRunner.GivenAsync("a Teacher user is logged in", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Teacher adds a grade for a student")]
+        public async System.Threading.Tasks.Task TeacherAddsAGradeForAStudent()
+        {
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Calculate time for investment with 200 per month until 1000 return", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 6
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Teacher adds a grade for a student", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -101,26 +109,35 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 await this.ScenarioStartAsync();
 #line 7
- await testRunner.GivenAsync("get stock price and last divident price for nVidia", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+await this.FeatureBackgroundAsync();
 #line hidden
-#line 8
- await testRunner.WhenAsync("calculate the time for return investment of 1000 for 100 per month", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 11
+    await testRunner.GivenAsync("a Student exists in the class", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 9
- await testRunner.ThenAsync("the needed time is 2 years and 0 months", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+                global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
+                            "Subject",
+                            "Grade"});
+                table5.AddRow(new string[] {
+                            "Math",
+                            "5"});
+#line 12
+    await testRunner.WhenAsync("the Teacher sends a request to add a grade for the student", ((string)(null)), table5, "When ");
+#line hidden
+#line 15
+    await testRunner.ThenAsync("the grade should be added successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Online Shop")]
-        public async System.Threading.Tasks.Task OnlineShop()
+        [NUnit.Framework.DescriptionAttribute("Teacher updates a grade for a student")]
+        public async System.Threading.Tasks.Task TeacherUpdatesAGradeForAStudent()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Online Shop", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 11
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Teacher updates a grade for a student", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 17
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -130,11 +147,17 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 12
- await testRunner.WhenAsync("online shop login with \"staf5\" username and \"staf5\" password", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 7
+await this.FeatureBackgroundAsync();
 #line hidden
-#line 13
- await testRunner.ThenAsync("validate user is logged in", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 18
+    await testRunner.GivenAsync("a Student already has a grade in Math", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 19
+    await testRunner.WhenAsync("the Teacher sends a request to update the grade to 6", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 20
+    await testRunner.ThenAsync("the grade should be updated successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

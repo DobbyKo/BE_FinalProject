@@ -9,7 +9,7 @@ using NUnit.Framework;
 using Reqnroll;
 using RestSharp;
 
-namespace BackEndAutomation.Tests.BBDTests
+namespace BackEndAutomation.Tests.BBDTests.Steps
 {
     [Binding]
     public class UserLoginFunctionalityStepDefinitions
@@ -101,7 +101,7 @@ namespace BackEndAutomation.Tests.BBDTests
         {
             _token = _dataExtractors.ExtractLoggedInUserToken(_response.Content, "access_token");
 
-            Utilities.UtilitiesMethods.AssertEqual(false, string.IsNullOrEmpty(_token), "JWT token was not returned!", _scenarioContext);
+            UtilitiesMethods.AssertEqual(false, string.IsNullOrEmpty(_token), "JWT token was not returned!", _scenarioContext);
 
             Logger.Log.Info($"Successfully retrieved JWT Token: {_token}");
             _test.Log(Status.Pass, $"Successfully retrieved JWT Token: {_token}");
@@ -111,7 +111,7 @@ namespace BackEndAutomation.Tests.BBDTests
         public void ThenTheTokenShouldContainAdminPermissions()
         {
             bool isTokenExtracted = string.IsNullOrEmpty(_dataExtractors.ExtractLoggedInUserToken(_response.Content, "access_token"));
-            Utilities.UtilitiesMethods.AssertEqual(
+            UtilitiesMethods.AssertEqual(
                 false,
                 isTokenExtracted,
                 "Token is not extracted or user is not logged in",
