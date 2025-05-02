@@ -1,2 +1,1 @@
-# BE-Skeleton
-Try to describe in readme what the project is about ;)
+Automation BE tests with BDD and RestSharp for school app. The tests should cover all API endpoints with positive and negative scenarios.
